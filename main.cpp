@@ -29,13 +29,13 @@ bool check_first(vector<string> v){ // check if time increase, and stops doesnt 
 
 
     regex time("[0-9]{1,2}:[0-9]{2}"); // dont worry about this
-    vector<strings> stops;
+    vector<string> stops;
     int last = 0; //
     int curr;
     for(auto x: v){
         if(regex_match(x, time)){
             curr = to_minutes(x);
-            if(last == curr){
+            if(last >= curr){
                 return false;
             }
             last = curr;
@@ -132,7 +132,7 @@ int main() // write something, if it means expectations vector will be written b
         cout << "\n"+x;
     }
     cout << "\n";
-    if(check_departure_hours(check_line(line).second)){
+    if(check_first(check_line(line).second)){
         cout << "ok";
     } else {
         cout << "nieok";
