@@ -52,9 +52,9 @@ bool check_first(vector<string> v){ // check if time increase, and stops doesnt 
 }
 
 pair<int, vector<string>> check_line(string line){ // checl if the line can meet expectations
-    regex first("0*[1-9]+([[:space:]](([6-9]|1[0-9]|20):[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]([[:lower:]]|[[:upper:]]|_|\\^)+)*");
+    regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]([[:lower:]]|[[:upper:]]|_|\\^)+)*");
     regex second("([[:lower:]]|[[:upper:]]|[[:space:]])+[[:space:]]\\d+.\\d\\d[[:space:]][1-9][0-9]*");
-    regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+[[:space:]]0*[1-9]+[[:space:]])*([[:lower:]]|[[:upper:]]|_|\\^)+");
+    regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+[[:space:]](0*[1-9][0-9]*|0)[[:space:]])*([[:lower:]]|[[:upper:]]|_|\\^)+");
 
         vector<string> v; // this is what I am going to return
         pair<int, vector<string>> outcome;
@@ -86,6 +86,9 @@ pair<int, vector<string>> check_line(string line){ // checl if the line can meet
                         word = word+x;
                     }
                 } else {
+                    If(stage==0 && word==""){
+                        word = "0";
+                    }
                     v.push_back(word);
                     word = "";
                     stage = 1;
