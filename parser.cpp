@@ -88,7 +88,7 @@ pair<int, vector<string>> check_line(string line){
                         word = word+x;
                     }
                 } else {
-                    If(stage==0 && word==""){
+                    if(stage==0 && word==""){
                         word = "0";
                     }
                     v.push_back(word);

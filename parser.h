@@ -2,6 +2,7 @@
 #define JNP1_PARSER_H
 
 // check if time increase, and stops doesn't repeat
+// TODO może zmienić nazwe tutaj bo niezbyt wiadomo co to jest check_first - może checkTimeAndStops
 bool check_first(vector<string> v);
 
 // check if the line can meet expectations
