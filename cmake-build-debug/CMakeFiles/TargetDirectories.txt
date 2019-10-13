@@ -1,0 +1,3 @@
+/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/JNP1.dir
+/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/edit_cache.dir
