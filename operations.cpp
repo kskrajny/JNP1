@@ -142,9 +142,9 @@ string requestForTickets(time_table timeTable, ticket_stock ticketStock,
     ticket_stock::iterator it1, it2, it3;
 
     for (it1 = ticketStock.begin(); it1 != ticketStock.end(); ++it1) {
-        if (updateMinCostTickets(timeOfTravel, min_cost, {it1})) {
+        if (updateMinCostTickets(timeOfTravel, min_cost, {it1}) > 0) {
             for (it2 = it1; it2 != ticketStock.end(); ++it2) {
-                if (updateMinCostTickets(timeOfTravel, min_cost, {it1, it2})) {
+                if (updateMinCostTickets(timeOfTravel, min_cost, {it1, it2}) > 0) {
                     for (it3 = it2; it3 != ticketStock.end(); ++it3) {
                         updateMinCostTickets(timeOfTravel, min_cost, {it1});
                     }
