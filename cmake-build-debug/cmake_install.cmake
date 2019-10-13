@@ -1,4 +1,4 @@
-# Install script for directory: /home/natalia/studia/Rok2/JNP1/JNP1
+# Install script for directory: /home/natalia/studia/Rok2/JNP1/zad1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

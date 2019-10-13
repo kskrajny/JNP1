@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/natalia/studia/Rok2/JNP1/JNP1/operations.cpp
+/home/natalia/studia/Rok2/JNP1/zad1/operations.cpp
 iostream
 -
 bits/stdc++.h
 -
 operations.h
-/home/natalia/studia/Rok2/JNP1/JNP1/operations.h
+/home/natalia/studia/Rok2/JNP1/zad1/operations.h
 
-/home/natalia/studia/Rok2/JNP1/JNP1/operations.h
+/home/natalia/studia/Rok2/JNP1/zad1/operations.h
 map
 -
 vector

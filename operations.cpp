@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool addCourseToTimetable(time_table timeTable, vector<string> course) {
+bool addCourseToTimetable(time_table &timeTable, vector<string> course) {
     if (timeTable.find(course[0]) != timeTable.end()) {
         return false;
     }
@@ -20,7 +20,7 @@ bool addCourseToTimetable(time_table timeTable, vector<string> course) {
     return true;
 }
 
-bool addTicketToStock(ticket_stock ticketStock, vector<string> ticket) {
+bool addTicketToStock(ticket_stock &ticketStock, vector<string> ticket) {
     if (ticketStock.find(ticket[0]) != ticketStock.end()) {
         return false;
     }
@@ -58,8 +58,8 @@ static string checkRequest(time_table timeTable, vector<string> request) {
         }
 
         if (time1 < time2) {
-            if (res.size()) {
-                res = ":-(" + request[i];
+            if (res == "") {
+                res = ":-( " + request[i];
             }
         }
     }
@@ -160,7 +160,7 @@ string requestForTickets(time_table timeTable, ticket_stock ticketStock,
     string res = to_string(min_cost.first);
 
     for (string single_ticket : min_cost.second) {
-        res += single_ticket;
+        res += " " + single_ticket;
     }
 
     return res;

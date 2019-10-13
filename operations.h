@@ -24,9 +24,9 @@ using namespace std;
  * @return Wartość true, gdy z powodzeniem dodaliśmy kurs, wartość false
  * w przypadku niepowodzenia.
  */
-bool addCourseToTimetable(time_table timeTable, vector<string> course);
+bool addCourseToTimetable(time_table &timeTable, vector<string> course);
 
-bool addTicketToStock(ticket_stock ticketStock, vector<string> ticket);
+bool addTicketToStock(ticket_stock &ticketStock, vector<string> ticket);
 
 string requestForTickets(time_table timeTable, ticket_stock ticketStock,
         vector<string> request);

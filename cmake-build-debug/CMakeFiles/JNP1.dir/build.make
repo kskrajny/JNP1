@@ -43,10 +43,10 @@ RM = /home/natalia/Downloads/clion-2018.3.4/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/natalia/studia/Rok2/JNP1/JNP1
+CMAKE_SOURCE_DIR = /home/natalia/studia/Rok2/JNP1/zad1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug
+CMAKE_BINARY_DIR = /home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/JNP1.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/JNP1.dir/flags.make
 
 CMakeFiles/JNP1.dir/main.cpp.o: CMakeFiles/JNP1.dir/flags.make
 CMakeFiles/JNP1.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/JNP1.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/JNP1.dir/main.cpp.o -c /home/natalia/studia/Rok2/JNP1/JNP1/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/JNP1.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/JNP1.dir/main.cpp.o -c /home/natalia/studia/Rok2/JNP1/zad1/main.cpp
 
 CMakeFiles/JNP1.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNP1.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/studia/Rok2/JNP1/JNP1/main.cpp > CMakeFiles/JNP1.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/studia/Rok2/JNP1/zad1/main.cpp > CMakeFiles/JNP1.dir/main.cpp.i
 
 CMakeFiles/JNP1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNP1.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/studia/Rok2/JNP1/JNP1/main.cpp -o CMakeFiles/JNP1.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/studia/Rok2/JNP1/zad1/main.cpp -o CMakeFiles/JNP1.dir/main.cpp.s
 
 CMakeFiles/JNP1.dir/parser.cpp.o: CMakeFiles/JNP1.dir/flags.make
 CMakeFiles/JNP1.dir/parser.cpp.o: ../parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/JNP1.dir/parser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/JNP1.dir/parser.cpp.o -c /home/natalia/studia/Rok2/JNP1/JNP1/parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/JNP1.dir/parser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/JNP1.dir/parser.cpp.o -c /home/natalia/studia/Rok2/JNP1/zad1/parser.cpp
 
 CMakeFiles/JNP1.dir/parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNP1.dir/parser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/studia/Rok2/JNP1/JNP1/parser.cpp > CMakeFiles/JNP1.dir/parser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/studia/Rok2/JNP1/zad1/parser.cpp > CMakeFiles/JNP1.dir/parser.cpp.i
 
 CMakeFiles/JNP1.dir/parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNP1.dir/parser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/studia/Rok2/JNP1/JNP1/parser.cpp -o CMakeFiles/JNP1.dir/parser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/studia/Rok2/JNP1/zad1/parser.cpp -o CMakeFiles/JNP1.dir/parser.cpp.s
 
 CMakeFiles/JNP1.dir/operations.cpp.o: CMakeFiles/JNP1.dir/flags.make
 CMakeFiles/JNP1.dir/operations.cpp.o: ../operations.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/JNP1.dir/operations.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/JNP1.dir/operations.cpp.o -c /home/natalia/studia/Rok2/JNP1/JNP1/operations.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/JNP1.dir/operations.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/JNP1.dir/operations.cpp.o -c /home/natalia/studia/Rok2/JNP1/zad1/operations.cpp
 
 CMakeFiles/JNP1.dir/operations.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNP1.dir/operations.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/studia/Rok2/JNP1/JNP1/operations.cpp > CMakeFiles/JNP1.dir/operations.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/studia/Rok2/JNP1/zad1/operations.cpp > CMakeFiles/JNP1.dir/operations.cpp.i
 
 CMakeFiles/JNP1.dir/operations.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNP1.dir/operations.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/studia/Rok2/JNP1/JNP1/operations.cpp -o CMakeFiles/JNP1.dir/operations.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/studia/Rok2/JNP1/zad1/operations.cpp -o CMakeFiles/JNP1.dir/operations.cpp.s
 
 # Object files for target JNP1
 JNP1_OBJECTS = \
@@ -110,7 +110,7 @@ JNP1: CMakeFiles/JNP1.dir/parser.cpp.o
 JNP1: CMakeFiles/JNP1.dir/operations.cpp.o
 JNP1: CMakeFiles/JNP1.dir/build.make
 JNP1: CMakeFiles/JNP1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable JNP1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable JNP1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/JNP1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +123,6 @@ CMakeFiles/JNP1.dir/clean:
 .PHONY : CMakeFiles/JNP1.dir/clean
 
 CMakeFiles/JNP1.dir/depend:
-	cd /home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/natalia/studia/Rok2/JNP1/JNP1 /home/natalia/studia/Rok2/JNP1/JNP1 /home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug /home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug /home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/JNP1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/natalia/studia/Rok2/JNP1/zad1 /home/natalia/studia/Rok2/JNP1/zad1 /home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug /home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug /home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles/JNP1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/JNP1.dir/depend
 

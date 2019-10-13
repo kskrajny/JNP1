@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/natalia/studia/Rok2/JNP1/JNP1/main.cpp" "/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/JNP1.dir/main.cpp.o"
-  "/home/natalia/studia/Rok2/JNP1/JNP1/operations.cpp" "/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/JNP1.dir/operations.cpp.o"
-  "/home/natalia/studia/Rok2/JNP1/JNP1/parser.cpp" "/home/natalia/studia/Rok2/JNP1/JNP1/cmake-build-debug/CMakeFiles/JNP1.dir/parser.cpp.o"
+  "/home/natalia/studia/Rok2/JNP1/zad1/main.cpp" "/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles/JNP1.dir/main.cpp.o"
+  "/home/natalia/studia/Rok2/JNP1/zad1/operations.cpp" "/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles/JNP1.dir/operations.cpp.o"
+  "/home/natalia/studia/Rok2/JNP1/zad1/parser.cpp" "/home/natalia/studia/Rok2/JNP1/zad1/cmake-build-debug/CMakeFiles/JNP1.dir/parser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
