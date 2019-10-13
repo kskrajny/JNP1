@@ -4,7 +4,7 @@
 
 using namespace std;
 
-static int to_minutes(string x){ // change xx:xx to minutes
+static int toMinutes(string x){ // change xx:xx to minutes
     x=x+":"; // for easier loop
     int sum = 0;
     int i = 0;
@@ -25,7 +25,7 @@ static int to_minutes(string x){ // change xx:xx to minutes
     return sum;
 }
 
-bool check_first(vector<string> v){
+bool checkTimeAndStops(vector<string> v){
     regex time("[0-9]{1,2}:[0-9]{2}"); // dont worry about this
     vector<string> stops;
     int last = 0; //
@@ -33,7 +33,7 @@ bool check_first(vector<string> v){
 
     for(auto x: v){
         if(regex_match(x, time)){
-            curr = to_minutes(x);
+            curr = toMinutes(x);
             if(last >= curr){
                 return false;
             }
@@ -51,7 +51,7 @@ bool check_first(vector<string> v){
     return true;
 }
 
-pair<int, vector<string>> check_line(string line){
+pair<int, vector<string>> checkLine(string line){
     regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]([[:lower:]]|[[:upper:]]|_|\\^)+)*");
     regex second("([[:lower:]]|[[:upper:]]|[[:space:]])+[[:space:]]\\d+.\\d\\d[[:space:]][1-9][0-9]*");
     regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+[[:space:]](0*[1-9][0-9]*|0)[[:space:]])*([[:lower:]]|[[:upper:]]|_|\\^)+");
@@ -77,15 +77,16 @@ pair<int, vector<string>> check_line(string line){
 
     line = line+" "; // for easier loop
     string word = ""; // this is where i write next signs
-    int stage = 0; // for linetype 1 and 2
+    int stage = 0;
 
-    switch (outcome.first%2) {
+    switch (outcome.first) {
 
         case 1:
             for(auto x: line){
                 if(x!=' '){
                     if(!stage==0 || x!='0'){
                         word = word+x;
+                        stage = 1;
                     }
                 } else {
                     if(stage==0 && word==""){
@@ -93,11 +94,10 @@ pair<int, vector<string>> check_line(string line){
                     }
                     v.push_back(word);
                     word = "";
-                    stage = 1;
                 }
             }
             break;
-        case 0:
+        case 2:
             for(auto x: line){
                 switch(stage){
                     case 0:
@@ -122,6 +122,24 @@ pair<int, vector<string>> check_line(string line){
                 }
             }
             break;
+        case 3:
+            for(auto x: line){
+                if(x!=' '){
+                    if(!stage==0 || x!='0'){
+                        word = word+x;
+                        stage = 1;
+                    }
+                } else {
+                    if(stage==0 && word==""){
+                        word = "0";
+                    }
+                    v.push_back(word);
+                    word = "";
+                    stage = 0;
+                }
+            }
+            break;
+            
     }
 
     outcome.second = v;
