@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/JNP1.dir/main.cpp.o CMakeFiles/JNP1.dir/parser.cpp.o CMakeFiles/JNP1.dir/operations.cpp.o  -o JNP1 

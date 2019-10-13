@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/natalia/studia/Rok2/JNP1/JNP1/operations.cpp
+iostream
+-
+bits/stdc++.h
+-
+operations.h
+/home/natalia/studia/Rok2/JNP1/JNP1/operations.h
+
+/home/natalia/studia/Rok2/JNP1/JNP1/operations.h
+map
+-
+vector
+-
+
