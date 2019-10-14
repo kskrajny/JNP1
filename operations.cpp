@@ -62,7 +62,7 @@ bool addCourseToTimetable(time_table &timeTable, vector<string> course) {
 
     map<string, int> stops;
 
-    for (unsigned i = 1 ; i < course.size() ; i += 2) {
+    for (unsigned i = 1; i < course.size(); i += 2) {
         stops.insert(make_pair(course[i+1], toMinutes(course[i])));
     }
 
@@ -100,7 +100,7 @@ static string checkRequest(time_table timeTable, vector<string> request) {
         return "error";
     }
 
-    for (unsigned i = 3 ; i < request.size()-1 ; i += 2) {
+    for (unsigned i = 3; i < request.size()-1; i += 2) {
         int time1 = getTimeOrError(timeTable, request[i], request[i-1]);
         int time2 = getTimeOrError(timeTable, request[i], request[i+1]);
 
