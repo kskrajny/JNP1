@@ -4,52 +4,6 @@
 
 using namespace std;
 
-static int toMinutes(string x){ // change xx:xx to minutes
-    x=x+":"; // for easier loop
-    int sum = 0;
-    int i = 0;
-    int stage = 0;
-    for(auto x: x){
-        if(x!=':'){
-            i=i*10+int(x)-48;
-        } else {
-            if(stage == 0){
-                sum=sum+i*60;
-                i=0;
-                stage = 1;
-            } else {
-                sum = sum+i;
-            }
-        }
-    }
-    return sum;
-}
-
-bool checkTimeAndStops(vector<string> v){
-    regex time("[0-9]{1,2}:[0-9]{2}"); // dont worry about this
-    vector<string> stops;
-    int last = 0; //
-    int curr;
-
-    for(auto x: v){
-        if(regex_match(x, time)){
-            curr = toMinutes(x);
-            if(last >= curr){
-                return false;
-            }
-            last = curr;
-        } else {
-            for(string y: stops){
-                if(x == y) {
-                    return false;
-                }
-            }
-            stops.push_back(x);
-        }
-    }
-
-    return true;
-}
 
 pair<int, vector<string>> checkLine(string line){
     regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]([[:lower:]]|[[:upper:]]|_|\\^)+)*");

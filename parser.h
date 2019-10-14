@@ -6,9 +6,6 @@
 
 using namespace std;
 
-// check if time increase, and stops doesn't repeat
-bool checkTimeAndStops(vector<string> v);
-
 // check if the line can meet expectations
 pair<int, vector<string>> checkLine(string line);
 

@@ -28,7 +28,7 @@ bool addCourseToTimetable(time_table &timeTable, vector<string> course);
 
 bool addTicketToStock(ticket_stock &ticketStock, vector<string> ticket);
 
-string requestForTickets(time_table timeTable, ticket_stock ticketStock,
+pair<int, string> requestForTickets(time_table timeTable, ticket_stock ticketStock,
         vector<string> request);
 
 
