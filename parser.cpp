@@ -4,14 +4,25 @@
 
 using namespace std;
 
-
+//pierwsza zmienna przyjmuje 1,2,3 w zaleznosci od rozpoznanego typu wiersza, -1 bledna linia, 0 pusta linia
 pair<int, vector<string>> checkLine(string line){
-    regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]([[:lower:]]|[[:upper:]]|_|\\^)+)*");
-    regex second("([[:lower:]]|[[:upper:]]|[[:space:]])+[[:space:]]\\d+.\\d\\d[[:space:]][1-9][0-9]*");
-    regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+[[:space:]](0*[1-9][0-9]*|0)[[:space:]])*([[:lower:]]|[[:upper:]]|_|\\^)+");
+    regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):"
+                "[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]"
+                "([[:lower:]]|[[:upper:]]|_|\\^)+)*");
+    regex second("([[:lower:]]|[[:upper:]]|[[:space:]])+[[:space:]]"
+                 "\\d+.\\d\\d[[:space:]][1-9][0-9]*");
+    regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+"
+                "[[:space:]](0*[1-9][0-9]*|0)[[:space:]])*([[:lower:]]"
+                "|[[:upper:]]|_|\\^)+");
 
-    vector<string> v; // this is what I am going to return
+    vector<string> v;
     pair<int, vector<string>> outcome;
+
+    if(line==""){
+        outcome.first = 0;
+        outcome.second = v;
+        return outcome;
+    }
 
     if(regex_match(line, first)) {
         outcome.first = 1;
@@ -49,6 +60,11 @@ pair<int, vector<string>> checkLine(string line){
                     v.push_back(word);
                     word = "";
                 }
+            }
+            if(v.size() < 3) {
+                outcome.first = -1;
+                v.clear();
+                outcome.second = v;
             }
             break;
         case 2:
@@ -91,6 +107,11 @@ pair<int, vector<string>> checkLine(string line){
                     word = "";
                     stage = 0;
                 }
+            }
+            if(v.size() < 4) {
+                outcome.first = -1;
+                v.clear();
+                outcome.second = v;
             }
             break;
             

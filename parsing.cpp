@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include "operations.cpp"
 #include "parser.cpp"
 
 using namespace std;
 
 int main(){
     string line;
-    for(int i=0;i<10;i++){
-        getline(cin, line);
+    while(getline(cin, line)){
 
         pair<int, vector<string>> checked = checkLine(line);
     
