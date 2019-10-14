@@ -42,11 +42,6 @@ pair<int, vector<string>> checkLine(string line){
     switch (outcome.first) {
 
         case 1:
-            if(line.size() < 4) {
-                outcome.first = -1;
-                v.clear();
-                outcome.second = v;
-            }
             for(auto x: line){
                 if(x!=' '){
                     if(!stage==0 || x!='0'){
@@ -60,6 +55,11 @@ pair<int, vector<string>> checkLine(string line){
                     v.push_back(word);
                     word = "";
                 }
+            }
+            if(v.size() < 3) {
+                outcome.first = -1;
+                v.clear();
+                outcome.second = v;
             }
             break;
         case 2:
@@ -88,11 +88,6 @@ pair<int, vector<string>> checkLine(string line){
             }
             break;
         case 3:
-            if(line.size() < 5) {
-                outcome.first = -1;
-                v.clear();
-                outcome.second = v;
-            }
             for(auto x: line){
                 if(x!=' '){
                     if(!stage==0 || x!='0'){
@@ -108,8 +103,12 @@ pair<int, vector<string>> checkLine(string line){
                     stage = 0;
                 }
             }
+            if(v.size() < 4) {
+                outcome.first = -1;
+                v.clear();
+                outcome.second = v;
+            }
             break;
-            
     }
 
     outcome.second = v;
