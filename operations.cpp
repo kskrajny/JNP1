@@ -62,8 +62,8 @@ bool addCourseToTimetable(time_table &timeTable, vector<string> course) {
 
     map<string, int> stops;
 
-    for (int i = 1; i < course.size(); i += 2) {
-        stops.insert(make_pair(course[i + 1], toMinutes(course[i])));
+    for (unsigned i = 1 ; i < course.size() ; i += 2) {
+        stops.insert(make_pair(course[i+1], toMinutes(course[i])));
     }
 
     timeTable.insert(make_pair(course[0], stops));
@@ -100,9 +100,9 @@ static string checkRequest(time_table timeTable, vector<string> request) {
         return "error";
     }
 
-    for (int i = 3; i < request.size() - 1; i += 2) {
-        int time1 = getTimeOrError(timeTable, request[i], request[i - 1]);
-        int time2 = getTimeOrError(timeTable, request[i], request[i + 1]);
+    for (unsigned i = 3 ; i < request.size()-1 ; i += 2) {
+        int time1 = getTimeOrError(timeTable, request[i], request[i-1]);
+        int time2 = getTimeOrError(timeTable, request[i], request[i+1]);
 
         if (time1 < 0 || time2 < 0 || time1 > time2) {
             return "error";
@@ -211,8 +211,9 @@ pair<int, string> requestForTickets(time_table timeTable, ticket_stock ticketSto
     string res = "";
 
     for (string single_ticket : min_cost.second) {
-        res += " " + single_ticket;
+        res += " " + single_ticket + ";";
     }
+    res.pop_back();
 
     return make_pair(min_cost.second.size(), res);
 }
