@@ -82,9 +82,8 @@ int main() {
 
         line_no++;
     }
-
-
-    //TODO przy zliczaniu 3. trzeba dodawać tutaj ceny (randomowa linijka z treści)
+    
+    cout << sum;
 
     return 0;
 }
