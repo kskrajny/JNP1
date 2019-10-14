@@ -4,60 +4,20 @@
 
 using namespace std;
 
-static int toMinutes(string x){ // change xx:xx to minutes
-    x=x+":"; // for easier loop
-    int sum = 0;
-    int i = 0;
-    int stage = 0;
-    for(auto x: x){
-        if(x!=':'){
-            i=i*10+int(x)-48;
-        } else {
-            if(stage == 0){
-                sum=sum+i*60;
-                i=0;
-                stage = 1;
-            } else {
-                sum = sum+i;
-            }
-        }
-    }
-    return sum;
-}
-
-bool checkTimeAndStops(vector<string> v){
-    regex time("[0-9]{1,2}:[0-9]{2}"); // dont worry about this
-    vector<string> stops;
-    int last = 0; //
-    int curr;
-
-    for(auto x: v){
-        if(regex_match(x, time)){
-            curr = toMinutes(x);
-            if(last >= curr){
-                return false;
-            }
-            last = curr;
-        } else {
-            for(string y: stops){
-                if(x == y) {
-                    return false;
-                }
-            }
-            stops.push_back(x);
-        }
-    }
-
-    return true;
-}
-
+//pierwsza zmienna przyjmuje 1,2,3 w zaleznosci od rozpoznanego typu wiersza, -1 bledna linia, 0 pusta linia
 pair<int, vector<string>> checkLine(string line){
     regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]([[:lower:]]|[[:upper:]]|_|\\^)+)*");
     regex second("([[:lower:]]|[[:upper:]]|[[:space:]])+[[:space:]]\\d+.\\d\\d[[:space:]][1-9][0-9]*");
     regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+[[:space:]](0*[1-9][0-9]*|0)[[:space:]])*([[:lower:]]|[[:upper:]]|_|\\^)+");
 
-    vector<string> v; // this is what I am going to return
+    vector<string> v;
     pair<int, vector<string>> outcome;
+    
+    if(line==""){
+        outcome.first = 0;
+        outcome.second = v;
+        return outcome;
+    }
 
     if(regex_match(line, first)) {
         outcome.first = 1;
@@ -82,6 +42,11 @@ pair<int, vector<string>> checkLine(string line){
     switch (outcome.first) {
 
         case 1:
+            if(line.size() < 4) {
+                outcome.first = -1;
+                v.clear();
+                outcome.second = v;
+            }
             for(auto x: line){
                 if(x!=' '){
                     if(!stage==0 || x!='0'){
@@ -123,6 +88,11 @@ pair<int, vector<string>> checkLine(string line){
             }
             break;
         case 3:
+            if(line.size() < 5) {
+                outcome.first = -1;
+                v.clear();
+                outcome.second = v;
+            }
             for(auto x: line){
                 if(x!=' '){
                     if(!stage==0 || x!='0'){
