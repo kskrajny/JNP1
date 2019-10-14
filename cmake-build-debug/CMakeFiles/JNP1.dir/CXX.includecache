@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/natalia/studia/Rok2/JNP1/zad1/main.cpp
+iostream
+-
+cstring
+-
+operations.h
+/home/natalia/studia/Rok2/JNP1/zad1/operations.h
+parser.h
+/home/natalia/studia/Rok2/JNP1/zad1/parser.h
+
 /home/natalia/studia/Rok2/JNP1/zad1/operations.cpp
 iostream
 -
@@ -16,6 +26,12 @@ operations.h
 
 /home/natalia/studia/Rok2/JNP1/zad1/operations.h
 map
+-
+vector
+-
+
+/home/natalia/studia/Rok2/JNP1/zad1/parser.h
+iostream
 -
 vector
 -

@@ -146,17 +146,12 @@ static bool updateMinCostTickets(
         return true;
     }
 
-    if (checkTimeOfTravel(timeOfTravel, tickets) < 0) {
-        return false;
-    }
-
     double cost = 0;
 
     for (ticket_stock::iterator it : tickets) {
         cost += it->second.first;
     }
-
-    // TODO sprawdzić czy referencja działa
+    
     if (cost < min_tickets.first) {
         vector<string> tickets_names;
 
@@ -171,7 +166,6 @@ static bool updateMinCostTickets(
     return true;
 }
 
-// TODO zamienić string na pare <int, string> <liczba biletów, string>
 pair<int, string> requestForTickets(time_table timeTable, ticket_stock ticketStock,
                          vector<string> request) {
     string check = checkRequest(timeTable, request);
