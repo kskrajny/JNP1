@@ -99,6 +99,10 @@ static string checkRequest(time_table timeTable, vector<string> request) {
     if (getTimeOrError(timeTable, request[1], request[2]) < 0) {
         return "error";
     }
+    
+    if (request[i-2] == request[i]) {
+        return "error";
+    }
 
     for (unsigned i = 3; i < request.size()-1; i += 2) {
         int time1 = getTimeOrError(timeTable, request[i], request[i-1]);
