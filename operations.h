@@ -5,8 +5,6 @@
 #include <vector>
 
 using namespace std;
-// TODO zmienić map<string, map<string, int, int>
-// map<kurs, map<przystanek, przyjazd, odjazd>
 /**
  * Rozkład jazdy jest mapą, która dla danego numeru kursu
  * zwraca zbiór przystanków i czasów, w jakich kurs się na nich zatrzymuje
