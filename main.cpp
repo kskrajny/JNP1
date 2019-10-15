@@ -6,38 +6,17 @@
 
 using namespace std;
 
-void testOperations() {
-    int n, m;
-    string s;
-    time_table timeTable;
-    ticket_stock ticketStock;
-
-    for (int i = 0; i < 3; i++) {
-        cin >> n;
-
-        for (int j = 0; j < n; j++) {
-            vector<string> data;
-            cin >> m;
-            for (int k = 0; k < m; k++) {
-                cin >> s;
-                data.push_back(s);
-            }
-
-            if (i == 0)
-                cout << (addCourseToTimetable(timeTable, data) ? "ok" : "no") << endl;
-            if (i == 1)
-                cout << (addTicketToStock(ticketStock, data) ? "ok" : "no") << endl;
-            if (i == 2)
-                cout << requestForTickets(timeTable, ticketStock, data).second << endl;
-        }
-    }
+void printError(string line, int line_no) {
+    string res = "Error in line";
+    
+    res += line_no;
+    res += ":";
+    res += line;
+    
+    cerr << result << endl;
 }
 
-// write something, if it means expectations vector will be written by program,
-// it will also convert hours(xx:xx) to minutes after 0:00 if they exists
 int main() {
-    //testOperations();
-
     int line_no = 1;
     int sum = 0;
     string line;
