@@ -99,10 +99,6 @@ static string checkRequest(time_table timeTable, vector<string> request) {
     if (getTimeOrError(timeTable, request[1], request[2]) < 0) {
         return "error";
     }
-    
-    if (request[i-2] == request[i]) {
-        return "error";
-    }
 
     for (unsigned i = 3; i < request.size()-1; i += 2) {
         int time1 = getTimeOrError(timeTable, request[i], request[i-1]);
@@ -112,11 +108,19 @@ static string checkRequest(time_table timeTable, vector<string> request) {
             return "error";
         }
 
+        if (request[i-2] == request[i]) {
+            return "error";
+        }
+
         if (time1 < time2) {
             if (res == "") {
                 res = ":-( " + request[i];
             }
         }
+    }
+
+    if (request[request.size() - 1] == request[request.size() - 3]) {
+        return "error";
     }
 
     if (getTimeOrError(timeTable, request.back(), request[request.size() - 2]) < 0) {
