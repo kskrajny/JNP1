@@ -23,13 +23,13 @@ using namespace std;
 // lub pusty vector wpp
 pair<int, vector<string>> checkLine(string line)
 {
-    regex first("(0*[1-9][0-9]*|0)([[:space:]](([6-9]|1[0-9]|20):"
-                "[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))[[:space:]]"
+    regex first("([0-9]*)(\x20(([6-9]|1[0-9]|20):"
+                "[0-5][0-9]|5:5[5-9]|21:([01][0-9]|2[01]))\x20"
                 "([[:lower:]]|[[:upper:]]|_|\\^)+)*");
-    regex second("([[:lower:]]|[[:upper:]]|[[:space:]])+[[:space:]]"
-                 "\\d+.\\d\\d[[:space:]][1-9][0-9]*");
-    regex third("\\?[[:space:]](([[:lower:]]|[[:upper:]]|_|\\^)+"
-                "[[:space:]](0*[1-9][0-9]*|0)[[:space:]])*([[:lower:]]"
+    regex second("([[:lower:]]|[[:upper:]]|\x20)+\x20"
+                 "\\d+\\.\\d\\d\x20[1-9][0-9]*");
+    regex third("\\?\x20(([[:lower:]]|[[:upper:]]|_|\\^)+"
+                "\x20([0-9]*)\x20)*([[:lower:]]"
                 "|[[:upper:]]|_|\\^)+");
 
     vector<string> v;
@@ -305,6 +305,14 @@ static string checkRequest(time_table timeTable, vector<string> request)
 {
     string res;
 
+    int time1 = getTimeOrError(timeTable, request[1], request[2]);
+    int time2 = getTimeOrError(timeTable, request[3], request[2]);
+
+    if (time1 < 0 || time2 < 0 || time1 >= time2)
+    {
+        return "error";
+    }
+
     if (getTimeOrError(timeTable, request[1], request[2]) < 0)
     {
         return "error";
@@ -312,8 +320,8 @@ static string checkRequest(time_table timeTable, vector<string> request)
 
     for (unsigned i = 3; i < request.size() - 1; i += 2)
     {
-        int time1 = getTimeOrError(timeTable, request[i], request[i - 1]);
-        int time2 = getTimeOrError(timeTable, request[i], request[i + 1]);
+        time1 = getTimeOrError(timeTable, request[i], request[i - 1]);
+        time2 = getTimeOrError(timeTable, request[i], request[i + 1]);
 
         if (time1 < 0 || time2 < 0 || time1 > time2)
         {
