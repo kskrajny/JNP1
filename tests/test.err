@@ -1,0 +1,4 @@
+Error in line 2: 1 7:13 a 7:14 b
+Error in line 3: 2 7:12 a 7:11 b
+Error in line 14: ? a 1 b 2 c
+Error in line 17: ? a 1 b 0 c
