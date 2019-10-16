@@ -16,6 +16,14 @@ operations.h
 parser.h
 /home/natalia/studia/Rok2/JNP1/zad1/parser.h
 
+/home/natalia/studia/Rok2/JNP1/zad1/operations.cpp
+iostream
+-
+bits/stdc++.h
+-
+operations.h
+/home/natalia/studia/Rok2/JNP1/zad1/operations.h
+
 /home/natalia/studia/Rok2/JNP1/zad1/operations.h
 map
 -

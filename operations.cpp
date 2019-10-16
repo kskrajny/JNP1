@@ -4,31 +4,33 @@
 
 using namespace std;
 
-static int toMinutes(string x){ // change xx:xx to minutes
-    x=x+":"; // for easier loop
+// Funkcja konwertuje format "xx:xx" godziny na minuty
+static int toMinutes(string x){
+    x = x + ":";
     int sum = 0;
     int i = 0;
     int stage = 0;
-    for(auto x: x){
-        if(x!=':'){
-            i=i*10+int(x)-48;
+    for (auto y: x){
+        if (y != ':'){
+            i = i * 10 + int(y) - 48;
         } else {
-            if(stage == 0){
-                sum=sum+i*60;
-                i=0;
+            if (stage == 0){
+                sum = sum + i * 60;
+                i = 0;
                 stage = 1;
             } else {
-                sum = sum+i;
+                sum = sum + i;
             }
         }
     }
     return sum;
 }
 
+// Sprawdza poprawność polecenia pierwszego rodzaju
 bool checkTimeAndStops(vector<string> v){
-    regex time("[0-9]{1,2}:[0-9]{2}"); // dont worry about this
+    regex time("[0-9]{1,2}:[0-9]{2}");
     vector<string> stops;
-    int last = 0; //
+    int last = 0;
     int curr;
 
     for(auto x: v){
@@ -39,8 +41,8 @@ bool checkTimeAndStops(vector<string> v){
             }
             last = curr;
         } else {
-            for(string y: stops){
-                if(x == y) {
+            for (string y: stops){
+                if (x == y) {
                     return false;
                 }
             }
@@ -51,6 +53,9 @@ bool checkTimeAndStops(vector<string> v){
     return true;
 }
 
+// Funkcja wykonuje polecenie pierwszego rodzaju
+// Zwraca true jeśli polecenie zakończyło się pomyślnie,
+// false wpp
 bool addCourseToTimetable(time_table &timeTable, vector<string> course) {
     if (!checkTimeAndStops(course)) {
         return false;
@@ -63,7 +68,7 @@ bool addCourseToTimetable(time_table &timeTable, vector<string> course) {
     map<string, int> stops;
 
     for (unsigned i = 1; i < course.size(); i += 2) {
-        stops.insert(make_pair(course[i+1], toMinutes(course[i])));
+        stops.insert(make_pair(course[i + 1], toMinutes(course[i])));
     }
 
     timeTable.insert(make_pair(course[0], stops));
@@ -71,6 +76,9 @@ bool addCourseToTimetable(time_table &timeTable, vector<string> course) {
     return true;
 }
 
+// Funkcja wykonuje polecenie drugiego rodzaju
+// Zwraca true jeśli polecenie zakończyło się pomyślnie,
+// false wpp
 bool addTicketToStock(ticket_stock &ticketStock, vector<string> ticket) {
     if (ticketStock.find(ticket[0]) != ticketStock.end()) {
         return false;
@@ -93,6 +101,11 @@ static int getTimeOrError(time_table timeTable, string stop, string course) {
     return timeTable.find(course)->second.find(stop)->second;
 }
 
+// Funkcja sprawdza czy podana prośba o bilety jest poprawna.
+// Jeśli nie jest, zwraca 'error',
+// jeśli jest, ale na którymś przystanku trzeba czekać, zwraca
+// ":-| nazwa_przystanku_gdzie_trzeba_czekać"
+// wpp zwraca "ok"
 static string checkRequest(time_table timeTable, vector<string> request) {
     string res;
 
@@ -100,15 +113,15 @@ static string checkRequest(time_table timeTable, vector<string> request) {
         return "error";
     }
 
-    for (unsigned i = 3; i < request.size()-1; i += 2) {
-        int time1 = getTimeOrError(timeTable, request[i], request[i-1]);
-        int time2 = getTimeOrError(timeTable, request[i], request[i+1]);
+    for (unsigned i = 3; i < request.size() - 1; i += 2) {
+        int time1 = getTimeOrError(timeTable, request[i], request[i - 1]);
+        int time2 = getTimeOrError(timeTable, request[i], request[i + 1]);
 
         if (time1 < 0 || time2 < 0 || time1 > time2) {
             return "error";
         }
 
-        if (request[i-2] == request[i]) {
+        if (request[i - 2] == request[i]) {
             return "error";
         }
 
@@ -119,18 +132,23 @@ static string checkRequest(time_table timeTable, vector<string> request) {
         }
     }
 
-    if (request[request.size() - 1] == request[request.size() - 3]) {
+    if (request.back() == request[request.size() - 3]) {
         return "error";
     }
 
-    if (getTimeOrError(timeTable, request.back(), request[request.size() - 2]) < 0) {
+    if (getTimeOrError(timeTable, request.back(),
+            request[request.size() - 2]) < 0) {
         return "error";
     }
 
     return res.size() ? res : "ok";
 }
 
-static int checkTimeOfTravel(int timeOfTravel,
+// Funkcja zwraca:
+// true, jeśli łączny czas ważności biletów jest większy
+// bądż równy czasowi podróży,
+// false wpp
+bool checkTimeOfTravel(int timeOfTravel,
         vector<ticket_stock::iterator> tickets) {
     int time = 0;
 
@@ -139,19 +157,26 @@ static int checkTimeOfTravel(int timeOfTravel,
     }
 
     if (time < timeOfTravel) {
-        return 1;
+        return false;
     }
 
-    return time == timeOfTravel ? 0 : -1;
+    return true;
 }
 
-static bool updateMinCostTickets(
+// Funkcja sprawdza, czy dany zestaw biletów pozwala na przejechanie
+// całej podróży i jeśli tak, to uaktualnia minimalny koszt zakupu biletów
+// oraz jego realizację.
+// Zwraca:
+// false, jeśli całkowity czas ważności biletów jest mniejszy niż
+// czas podróży
+// true wpp
+bool updateMinCostTickets(
         int timeOfTravel,
         pair<double, vector<string>> &min_tickets,
         vector<ticket_stock::iterator> tickets) {
 
-    if (checkTimeOfTravel(timeOfTravel, tickets) > 0) {
-        return true;
+    if (!checkTimeOfTravel(timeOfTravel, tickets)) {
+        return false;
     }
 
     double cost = 0;
@@ -174,8 +199,16 @@ static bool updateMinCostTickets(
     return true;
 }
 
-pair<int, string> requestForTickets(time_table timeTable, ticket_stock ticketStock,
-                         vector<string> request) {
+// Funkcja wykonuje polecenie pierwszego rodzaju
+// Zwraca:
+// W przypadku znalezienia minimalnej realizacji zakupu
+// <liczba potrzebnych biletów, bilety realizujące ten zakup>
+// W przypadku, gdy na którymś przystanku trzeba czekać
+// <0, ":-| nazwa_przystanku_gdzie_trzeba_czekać">
+// W przypadku nie znalezienia biletów <0, ":-|">
+// W przypadku błędnego wiersza <-1, error>
+pair<int, string> requestForTickets(time_table timeTable,
+        ticket_stock ticketStock, vector<string> request) {
     string check = checkRequest(timeTable, request);
 
     if (check.compare("error") == 0) {
@@ -195,11 +228,13 @@ pair<int, string> requestForTickets(time_table timeTable, ticket_stock ticketSto
     ticket_stock::iterator it1, it2, it3;
 
     for (it1 = ticketStock.begin(); it1 != ticketStock.end(); ++it1) {
-        if (updateMinCostTickets(timeOfTravel, min_cost, {it1}) > 0) {
+        if (!updateMinCostTickets(timeOfTravel, min_cost, {it1})) {
             for (it2 = it1; it2 != ticketStock.end(); ++it2) {
-                if (updateMinCostTickets(timeOfTravel, min_cost, {it1, it2}) > 0) {
+                if (!updateMinCostTickets(timeOfTravel,
+                        min_cost, {it1, it2})) {
                     for (it3 = it2; it3 != ticketStock.end(); ++it3) {
-                        updateMinCostTickets(timeOfTravel, min_cost, {it1, it2, it3});
+                        updateMinCostTickets(timeOfTravel,
+                                min_cost, {it1, it2, it3});
                     }
                 }
             }
@@ -215,6 +250,7 @@ pair<int, string> requestForTickets(time_table timeTable, ticket_stock ticketSto
     for (string single_ticket : min_cost.second) {
         res += " " + single_ticket + ";";
     }
+
     res.pop_back();
 
     return make_pair(min_cost.second.size(), res);

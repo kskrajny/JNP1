@@ -1,4 +1,4 @@
-Error in line 10: 1 3:00 k 4:00 s
+Error in line 10: 1 6:00 k 7:00 s
 Error in line 11: -4 6:00 k 7:00 s
 Error in line 12: -004 6:00 k 7:00 s
 Error in line 13: 000-4 6:00 k 7:00 s
@@ -13,4 +13,4 @@ Error in line 27: 12
 Error in line 28: ?
 Error in line 30:     14 21:22 Warszawa 21:23 Boston
 Error in line 32: ? a 1 a
-Error in line 34: sprawdzone do pytania o darmowe bilety
+Error in line 36: sprawdzone do pytania o darmowe bilety
