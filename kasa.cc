@@ -308,25 +308,35 @@ static string checkRequest(time_table timeTable, vector<string> request)
 {
     string res;
 
-    int time1 = getTimeOrError(timeTable, request[1], request[2]);
-    int time2 = getTimeOrError(timeTable, request[3], request[2]);
+    int time1;
+    int time2;
+    int time0;
 
-    if (time1 < 0 || time2 < 0 || time1 >= time2)
+    time0 = getTimeOrError(timeTable, request[1], request[2]);
+    time1 = getTimeOrError(timeTable, request[3], request[2]);        
+    
+    if (time0 < 0 || time1 < 0 || time0 >= time1)
     {
-        return "error";
+        return "error";            
     }
 
-    if (getTimeOrError(timeTable, request[1], request[2]) < 0)
+    if (request[1] == request[3])
     {
         return "error";
     }
 
     for (unsigned i = 3; i < request.size() - 1; i += 2)
     {
+        time0 = getTimeOrError(timeTable, request[i - 2], request[i - 1]);
         time1 = getTimeOrError(timeTable, request[i], request[i - 1]);
         time2 = getTimeOrError(timeTable, request[i], request[i + 1]);
 
-        if (time1 < 0 || time2 < 0 || time1 > time2)
+        if (time0 < 0 || time1 < 0 || time0 >= time1)
+        {
+            return "error";            
+        }
+
+        if (time2 < 0 || time1 > time2)
         {
             return "error";
         }
@@ -345,19 +355,30 @@ static string checkRequest(time_table timeTable, vector<string> request)
         }
     }
 
-    if (request.back() == request[request.size() - 3])
+    unsigned x = request.size();
+
+    time0 = getTimeOrError(timeTable, request[x - 3], request[x - 2]);
+    time1 = getTimeOrError(timeTable, request[x - 1], request[x - 2]);        
+    
+    if (time0 < 0 || time1 < 0 || time0 >= time1)
+    {
+        return "error";            
+    }    
+
+    if (request.back() == request[x - 3])
     {
         return "error";
     }
 
     if (getTimeOrError(timeTable, request.back(),
-                       request[request.size() - 2]) < 0)
+                       request[x - 2]) < 0)
     {
         return "error";
     }
 
     return res.size() ? res : "ok";
 }
+
 
 // Funkcja zwraca:
 // true, jeśli łączny czas ważności biletów jest większy
