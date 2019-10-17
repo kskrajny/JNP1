@@ -76,7 +76,7 @@ pair<int, vector<string>> checkLine(string line)
         {
             if (x!=' ')
             {
-                if (!stage == 0 || x != '0')
+                if (stage != 0 || x != '0')
                 {
                     word = word + x;
                     stage = 1;
@@ -137,7 +137,7 @@ pair<int, vector<string>> checkLine(string line)
         {
             if (x != ' ')
             {
-                if (!stage == 0 || x != '0')
+                if (stage != 0 || x != '0')
                 {
                     word = word+x;
                     stage = 1;
