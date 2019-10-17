@@ -550,7 +550,7 @@ int main()
         line_no++;
     }
 
-    cout << sum;
+    cout << sum << endl;
 
     return 0;
 }
