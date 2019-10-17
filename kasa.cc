@@ -5,18 +5,16 @@
 #include <map>
 #include <vector>
 
-
 using namespace std;
 
 // Rozkład jazdy jest mapą, która dla danego numeru kursu
-// zwraca zbiór przystanków i czasów, w jakich kurs się na nich zatrzymuje
+// zwraca mapę przystanków na czas, w jakim kurs się na nim zatrzymuje
 #define time_table map<string, map<string, int>>
 
-//Zbiór biletów jest mapą, która dla danej nazwy biletu zwraca jego cenę i czas ważności
+// Zbiór biletów jest mapą, która dla danej nazwy biletu zwraca jego cenę i czas ważności
 #define ticket_stock map<string, pair<double, int>>
 
-
-// funkcja sprawdza, czy podany w argumencie napis jest poprawnym poleceniem
+// Funkcja sprawdza, czy podany w argumencie napis jest poprawnym poleceniem
 // pierwsza wartość pary przyjmuje wartości całkowite od -1 do 3
 // -1 - błędne polecenie, 0 - pusty napis, 1 - polecenie typu pierwszego, itd
 // druga wartość pary, to vector napisów, gdy rozpoznano polecenie,
@@ -35,26 +33,26 @@ pair<int, vector<string>> checkLine(string line)
     vector<string> v;
     pair<int, vector<string>> outcome;
 
-    if(line=="")
+    if (line == "")
     {
         outcome.first = 0;
         outcome.second = v;
         return outcome;
     }
 
-    if(regex_match(line, first))
+    if (regex_match(line, first))
     {
         outcome.first = 1;
     }
     else
     {
-        if(regex_match(line, second))
+        if (regex_match(line, second))
         {
             outcome.first = 2;
         }
         else
         {
-            if(regex_match(line, third))
+            if (regex_match(line, third))
             {
                 outcome.first = 3;
             }
@@ -67,27 +65,26 @@ pair<int, vector<string>> checkLine(string line)
         }
     }
 
-    line = line+" "; // ułatwia zapisanie pętli
+    line = line + " "; // ułatwia zapisanie pętli
     string word = "";
     int stage = 0;
 
     switch (outcome.first)
     {
-
     case 1:
-        for(auto x: line)
+        for (auto x: line)
         {
-            if(x!=' ')
+            if (x!=' ')
             {
-                if(!stage==0 || x!='0')
+                if (!stage == 0 || x != '0')
                 {
-                    word = word+x;
+                    word = word + x;
                     stage = 1;
                 }
             }
             else
             {
-                if(stage==0 && word=="")
+                if (stage == 0 && word == "")
                 {
                     word = "0";
                 }
@@ -95,7 +92,7 @@ pair<int, vector<string>> checkLine(string line)
                 word = "";
             }
         }
-        if(v.size() < 3)
+        if (v.size() < 3)
         {
             outcome.first = -1;
             v.clear();
@@ -103,28 +100,28 @@ pair<int, vector<string>> checkLine(string line)
         }
         break;
     case 2:
-        for(auto x: line)
+        for (auto x: line)
         {
-            switch(stage)
+            switch (stage)
             {
             case 0:
-                if(int(x)<48 || int(x)>57)
+                if (int(x) < 48 || int(x) > 57)
                 {
-                    word = word+x;
+                    word = word + x;
                 }
                 else
                 {
                     word.pop_back();
                     v.push_back(word);
                     word = "";
-                    word = word+x;
-                    stage=1;
+                    word = word + x;
+                    stage = 1;
                 }
                 break;
             case 1:
-                if(x != ' ')
+                if (x != ' ')
                 {
-                    word = word+x;
+                    word = word + x;
                 }
                 else
                 {
@@ -136,11 +133,11 @@ pair<int, vector<string>> checkLine(string line)
         }
         break;
     case 3:
-        for(auto x: line)
+        for (auto x: line)
         {
-            if(x!=' ')
+            if (x != ' ')
             {
-                if(!stage==0 || x!='0')
+                if (!stage == 0 || x != '0')
                 {
                     word = word+x;
                     stage = 1;
@@ -148,7 +145,7 @@ pair<int, vector<string>> checkLine(string line)
             }
             else
             {
-                if(stage==0 && word=="")
+                if (stage == 0 && word == "")
                 {
                     word = "0";
                 }
@@ -157,7 +154,7 @@ pair<int, vector<string>> checkLine(string line)
                 stage = 0;
             }
         }
-        if(v.size() < 4)
+        if (v.size() < 4)
         {
             outcome.first = -1;
             v.clear();
@@ -171,7 +168,7 @@ pair<int, vector<string>> checkLine(string line)
     return outcome;
 }
 
-// funkcja zwraca ilość minut, które płynęły od 0:00
+// Funkcja zwraca ilość minut, które minęły od 0:00
 // do godziny zapisanej w stringu x
 static int toMinutes(string x)
 {
@@ -202,7 +199,7 @@ static int toMinutes(string x)
     return sum;
 }
 
-// funkcja zwraca true, jeśli występujące w vectorze napisy
+// Funkcja zwraca true, jeśli występujące w vectorze napisy
 // symbolizujące godziny są uporządkowane rosnąco
 // oraz przystanki się nie powtarzają
 // false wpp
@@ -213,12 +210,12 @@ bool checkTimeAndStops(vector<string> v)
     int last = 0;
     int curr;
 
-    for(auto x: v)
+    for (auto x: v)
     {
-        if(regex_match(x, time))
+        if (regex_match(x, time))
         {
             curr = toMinutes(x);
-            if(last >= curr)
+            if (last >= curr)
             {
                 return false;
             }
@@ -426,7 +423,7 @@ bool updateMinCostTickets(
 // W przypadku, gdy na którymś przystanku trzeba czekać
 // <0, ":-| nazwa_przystanku_gdzie_trzeba_czekać">
 // W przypadku nie znalezienia biletów <0, ":-|">
-// W przypadku błędnego wiersza <-1, error>
+// W przypadku błędnego wiersza <-1, "error">
 pair<int, string> requestForTickets(time_table timeTable,
                                     ticket_stock ticketStock, vector<string> request)
 {
@@ -485,7 +482,6 @@ pair<int, string> requestForTickets(time_table timeTable,
 
     return make_pair(min_cost.second.size(), res);
 }
-
 
 void printError(const string &line, int line_no)
 {
@@ -554,4 +550,3 @@ int main()
 
     return 0;
 }
-
