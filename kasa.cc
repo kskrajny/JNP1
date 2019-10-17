@@ -274,7 +274,15 @@ bool addTicketToStock(ticket_stock &ticketStock, vector<string> ticket)
         return false;
     }
 
-    pair<double, int> new_ticket(stod(ticket[1]), stoi(ticket[2]));
+    try
+    {
+        pair<double, int> new_ticket(stod(ticket[1]), stoi(ticket[2]));
+    }
+    catch (out_of_range)
+    {
+        return false;
+    }
+    
     ticketStock.insert(make_pair(ticket[0], new_ticket));
 
     return true;
