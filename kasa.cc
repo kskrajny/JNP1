@@ -17,7 +17,7 @@ using namespace std;
 // Funkcja sprawdza, czy podany w argumencie napis jest poprawnym poleceniem
 // pierwsza wartość pary przyjmuje wartości całkowite od -1 do 3
 // -1 - błędne polecenie, 0 - pusty napis, 1 - polecenie typu pierwszego, itd
-// druga wartość pary, to vector napisów, gdy rozpoznano polecenie,
+// druga wartość pary to vector napisów, gdy rozpoznano polecenie,
 // lub pusty vector wpp
 pair<int, vector<string>> checkLine(string line)
 {
@@ -139,7 +139,7 @@ pair<int, vector<string>> checkLine(string line)
             {
                 if (stage != 0 || x != '0')
                 {
-                    word = word+x;
+                    word = word + x;
                     stage = 1;
                 }
             }
