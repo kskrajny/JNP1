@@ -276,16 +276,14 @@ bool addTicketToStock(ticket_stock &ticketStock, vector<string> ticket)
 
     try
     {
-        pair<double, int> new_ticket(stod(ticket[1]), stoi(ticket[2]));
+        pair<double, int> new_ticket(stod(ticket[1]), stoi(ticket[2]));      
+        ticketStock.insert(make_pair(ticket[0], new_ticket));
+        return true;
     }
     catch (out_of_range)
     {
         return false;
     }
-    
-    ticketStock.insert(make_pair(ticket[0], new_ticket));
-
-    return true;
 }
 
 // Zwraca czas zatrzymania kursu na przystanku lub -1 jeśli nie istnieje przystanek lub kurs
